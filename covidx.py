@@ -1,6 +1,19 @@
+import sys
 import requests
 
-url = 'https://corona.lmao.ninja/all'
+# Source
+url = 'https://corona.lmao.ninja/'
+
+# Set url endpoint
+if len(sys.argv) == 1:
+    print('WORLD')
+    url += 'all'
+else:
+    country = sys.argv[1]
+    print(country.upper())
+    url += f'countries/{country}'
+
+# Request data
 data = requests.get(url).json()
 
 # Process data
