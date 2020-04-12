@@ -10,7 +10,7 @@ if len(sys.argv) == 1:
     url += 'all'
 else:
     country = sys.argv[1]
-    print(country.upper())
+    print(f'==== COVID19 IN {country.upper()} ====')
     url += f'countries/{country}'
 
 # Request data
@@ -23,7 +23,6 @@ recovered = data['recovered']
 deathr = round(deaths/cases*100, 2)
 recovr = round(recovered/cases*100, 2)
 tests = data['tests']
-affectedCountries = data['affectedCountries']
 todayCases = data['todayCases']
 todayDeaths = data['todayDeaths']
 active = data['active']
@@ -31,9 +30,9 @@ critical = data['critical']
 casesPerOneMillion = data['casesPerOneMillion']
 deathsPerOneMillion = data['deathsPerOneMillion']
 testsPerOneMillion = data['testsPerOneMillion']
-
-
-print('======== COVID19 ========')
+if len(sys.argv) == 1:
+    affectedCountries = data['affectedCountries']
+    print('======== COVID19 ========')
 print(f'Total Cases: {cases}')
 print(f'Deaths: {deaths} ({deathr}%)')
 print(f'Recovered: {recovered} ({recovr}%)')
@@ -49,5 +48,6 @@ print(f'Tests per Million: {testsPerOneMillion}')
 print(f'Cases per Million: {casesPerOneMillion}')
 print(f'Deaths per Million: {deathsPerOneMillion}')
 print('-------------------------')
-print(f'Affected Countries: {affectedCountries}')
-print('=========================')
+if len(sys.argv) == 1:
+    print(f'Affected Countries: {affectedCountries}')
+    print('=========================')
