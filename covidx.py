@@ -6,7 +6,6 @@ url = 'https://corona.lmao.ninja/v2/'
 
 # Set url endpoint
 if len(sys.argv) == 1:
-    print('WORLD')
     url += 'all'
 else:
     country = sys.argv[1]
@@ -32,7 +31,7 @@ deathsPerOneMillion = data['deathsPerOneMillion']
 testsPerOneMillion = data['testsPerOneMillion']
 if len(sys.argv) == 1:
     affectedCountries = data['affectedCountries']
-    print('======== COVID19 ========')
+    print('===== COVID19 GLOBAL DATA =====')
 print(f'Total Cases: {cases}')
 print(f'Deaths: {deaths} ({deathr}%)')
 print(f'Recovered: {recovered} ({recovr}%)')
