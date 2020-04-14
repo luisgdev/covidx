@@ -1,10 +1,16 @@
 import sys
+import time
 import requests
 
-# Source
+
+print('.')
+# Start counting elapsed time
+init_time = time.perf_counter()
+
+# Source URL
 url = 'https://corona.lmao.ninja/v2/'
 
-# Set url endpoint
+# Set URL endpoint
 if len(sys.argv) == 1:
     url += 'all'
 else:
@@ -32,6 +38,8 @@ testsPerOneMillion = data['testsPerOneMillion']
 if len(sys.argv) == 1:
     affectedCountries = data['affectedCountries']
     print('===== COVID19 GLOBAL DATA =====')
+
+# Print processed data
 print(f'Total Cases: {cases}')
 print(f'Deaths: {deaths} ({deathr}%)')
 print(f'Recovered: {recovered} ({recovr}%)')
@@ -50,3 +58,10 @@ print('-------------------------')
 if len(sys.argv) == 1:
     print(f'Affected Countries: {affectedCountries}')
     print('=========================')
+
+# Start counted elapsed time
+print(f' *** Elapsed time: {round(time.perf_counter() - init_time, 2)} s ***\n.')
+
+
+if __name__ == "__main__":
+    pass
