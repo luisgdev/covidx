@@ -9,6 +9,7 @@ def run():
     # Set URL endpoint
     if len(sys.argv) == 1:
         url += 'all'
+        print('===== COVID19 GLOBAL DATA =====')
     else:
         country = sys.argv[1]
         print(f'==== COVID19 IN {country.upper()} ====')
@@ -33,7 +34,6 @@ def run():
     testsPerOneMillion = data['testsPerOneMillion']
     if len(sys.argv) == 1:
         affectedCountries = data['affectedCountries']
-        print('===== COVID19 GLOBAL DATA =====')
 
     # Print processed data
     print(f'Total Cases: {cases}')
