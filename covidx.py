@@ -3,22 +3,35 @@ import time
 
 import requests
 
+API_URL = "https://corona.lmao.ninja/v2"
+
+
+class CovidApi(object):
+    all_: str = f"{API_URL}/all"
+    country: str = f"{API_URL}/countries/"
+
+
+def get_data(url: str) -> dict:
+    data: dict = {}
+    try:
+        data = requests.get(url).json()
+    except Exception as ex:
+        print(f"Error: {ex}")
+    return data
+
 
 def run():
-    # Source URL
-    url = "https://corona.lmao.ninja/v2/"
-
     # Set URL endpoint
+    url: str = CovidApi.all_
     if len(sys.argv) == 1:
-        url += "all"
         print("===== COVID19 GLOBAL DATA =====")
     else:
         country = sys.argv[1]
         print(f"==== COVID19 IN {country.upper()} ====")
-        url += f"countries/{country}"
+        url = CovidApi.country + country
 
     # Request data
-    data = requests.get(url).json()
+    data = get_data(url)
 
     # Process data
     cases = data["cases"]
@@ -58,7 +71,7 @@ def run():
         print("=========================")
 
 
-def test():
+def main():
     print(".")
     # Start counting elapsed time
     init_time = time.perf_counter()
@@ -70,4 +83,5 @@ def test():
 
 
 if __name__ == "__main__":
-    test()
+    # main()
+    print(get_data(CovidApi.all_))
