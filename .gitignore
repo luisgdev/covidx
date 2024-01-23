@@ -131,3 +131,6 @@ dmypy.json
 # Project local data
 .vscode/
 __pycache__/
+
+# Pycharm
+.idea/
