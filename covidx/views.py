@@ -6,7 +6,7 @@ from covidx.models import Global
 def show_data(data: dict) -> None:
     """Show data"""
     info: Global = Global(**data)
-    output: tuple(str) = (
+    output: tuple = (
         f"Total Cases: {info.cases} ({round(info.cases/info.population*100, 2)}%)",
         f"Deaths: {info.deaths} ({round(info.deaths/info.cases*100, 2)}%)",
         f"Recovered: {info.recovered} ({round(info.recovered/info.cases*100, 2)}%)",
@@ -27,5 +27,5 @@ def show_data(data: dict) -> None:
     )
     for line in output:
         print(line)
-    if not info.country_info:
+    if info.affected_countries:
         print(f"Affected Countries: {info.affected_countries}")
